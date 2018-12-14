@@ -1,0 +1,268 @@
+    1  apt get update
+    2  get update
+    3  sudo get update
+    4  sudo getupdate
+    5  sudo apt getupdate
+    6  apt getupdate
+    7  apt getu pdate
+    8  sudo apt update
+    9  sudo apt upgrade
+   10  ip -a
+   11  ifconfig
+   12  vi /etc/hosts
+   13  ping saltminion1
+   14  ping saltminion2
+   15  wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+   16  nano /etc/apt/sources.list.d/saltstack.list
+   17  sudo apt-get update
+   18  apt-get install salt-master
+   19  service salt-master status
+   20  clear
+   21  salt-key -L
+   22  cat /var/log/salt/master 
+   23* 
+   24  salt-key -L
+   25  salt-key -a saltminion1
+   26  salt-key -L
+   27  cd /etc/salt/
+   28  ls
+   29  cd pki/
+   30  ls
+   31  cd master/
+   32  ls
+   33  cd minions
+   34  ls
+   35  cat saltminion1 
+   36  salt-key -d saltminion1 
+   37  salt-key -L
+   38  salt-key -a saltminion1
+   39  ls
+   40  cd ..
+   41  ls
+   42  salt * test.ping
+   43  salt saltminion1 test.ping
+   44  salt '*'  test.ping
+   45  salt-key
+   46  salt-key -a saltminionone
+   47  salt-key 
+   48  salt '*'  test.ping
+   49  salt-key -D
+   50  salt-key 
+   51  salt-key -A
+   52  salt-key 
+   53  salt '*'  test.ping
+   54  cd /etc/salt/master.d/
+   55  ls
+   56  nano autosign.conf
+   57  salt-key
+   58  cd ..
+   59  ls
+   60  nano master
+   61  service salt-master restart
+   62  salt-key
+   63  mv /etc/salt/master.d/autosign.conf /etc/salt/
+   64  ls
+   65  salt-key
+   66  nano master
+   67  cd /var/cache/
+   68  ls
+   69  cd salt/
+   70  ls
+   71  cd master/
+   72  ls
+   73  cd minions/
+   74  ls
+   75  cd saltminion1
+   76  ls
+   77  cat cat data.p 
+   78  cd /
+   79  salt saltminion1 grain.ls
+   80  salt saltminion1 grains.ls
+   81  salt saltminion1 grains.items
+   82  salt saltminion1 grains.items.id
+   83  salt saltminion1 grains.items
+   84  salt saltminion1 grains.items | more
+   85  salt-key -F master
+   86  salt saltminion1 file.mkdir /root/demodir
+   87  salt saltminion1 file.touch /root/demodir/file.txt
+   88  salt saltminion1 user.add mbondad
+   89  salt saltminion1 group.adduser sudo mbondad
+   90  salt saltminion1 package.install curl
+   91  salt saltminion1 pkg.install curl
+   92  ifconfig
+   93  salt saltminion1 cron.set_job mbondad '*' '*' '*' '*' '*' 'logger i am mbondad'
+   94  salt saltminion1 sys.list_modules
+   95  salt saltminion1 sys.list_functions time
+   96  salt saltminion1 sys.list_functions timezone
+   97  salt saltminion1 sys.doc timezone.get_hwclock
+   98  salt saltminion1 timezone.get_hwclock
+   99  salt saltminion1 timezone.get_zone
+  100  salt saltminion1 timezone.get_zonecode
+  101  salt saltminion1 sys.list_functions cmd
+  102  salt saltminion1 sys.doc cmd.shell
+  103  salt saltminion1 sys.list_functions test
+  104  salt saltminion1 sys.doc test.version
+  105  salt saltminion1 sys.doc cp.push
+  106  salt saltminion1 sys.list_functions cp
+  107  salt saltminion1 sys.doc cp.recv
+  108  salt saltminion1 sys.doc salt-cp
+  109* 
+  110  salt saltminion1 sys.doc cp.get_file
+  111  salt saltminion1 sys.doc file.manage
+  112  salt saltminion1 sys.list_functions file
+  113  salt saltminion1 sys.doc file.manage_file
+  114  salt saltminion1 grain.get os
+  115  salt saltminion1 grains.get os
+  116  salt saltminion1 grains.set env prod
+  117  salt saltminion1 grains.get env
+  118  salt -G 'env:prod' test.ping
+  119  salt -G 'configgrain:fromconfigfile' test.ping
+  120  salt -G 'configgrain: fromconfigfile' test.ping
+  121  salt -G 'configgrain:fromconfigfile' test.ping
+  122  salt -G 'grainfromoutsidefile:outside' test.ping
+  123  salt saltminion1 grains.get configgrain
+  124  vi /etc/salt/master
+  125  nano /etc/salt/master
+  126  service salt-master restart
+  127  service salt-master status
+  128  cd /srv/
+  129  mkdir salt
+  130  cd salt/
+  131  ls
+  132  nano transfer.sls
+  133  nano demofile.txt
+  134  salt saltminion1 state.sls transfer
+  135  nano user.sls
+  136  nano files.sls
+  137  nano packages.sls
+  138  salt saltminion1 state.sls user
+  139  salt saltminion1 state.sls files
+  140  salt saltminion1 sys.doc_state file.directory
+  141  salt saltminion1 state.sls user
+  142  salt saltminion1 state.sls files
+  143  ls
+  144  salt saltminion2 state.sls packages
+  145  nano files.sls
+  146  salt saltminion1 state.sls files
+  147  nano cron.sls
+  148  salt saltminion1 state.sls cron
+  149  less /var/log/syslog 
+  150  salt saltminion1 sys.list_state_modules
+  151  salt saltminion1 sys.list_state_functions cloud
+  152  salt saltminion1 sys.list_state_functions status
+  153  salt saltminion1 sys.list_state_functions service
+  154  salt saltminion1 sys.state_doc service.running
+  155  salt saltminion1 sys.state_doc service.running | more
+  156  mkdir test
+  157  cd test
+  158  mkdir test1
+  159  cd test1/
+  160  mkdir test2
+  161  ls
+  162  cd /srv/salt/
+  163  nano recursive.sls
+  164  salt saltminion1 state.sls recursive
+  165  nano recursive.sls
+  166  salt saltminion1 state.sls recursive
+  167  nano recursive.sls
+  168  salt saltminion1 state.sls recursive
+  169  nano recursive.sls
+  170  salt saltminion1 state.sls recursive
+  171  nano recursive.sls
+  172  salt saltminion1 state.sls recursive
+  173  cat /etc/shadow
+  174  nano recursive.sls
+  175  salt saltminion1 state.sls recursive
+  176  nano recursive.sls
+  177  salt saltminion1 state.sls recursive
+  178  nano recursive.sls
+  179  ls
+  180  cd test
+  181  ls
+  182  cd test1
+  183  ls
+  184  cd ..
+  185  nano recursive.sls 
+  186  salt saltminion1 state.sls recursive
+  187  nano recursive.sls 
+  188  salt saltminion1 state.sls recursive
+  189  nano recursive.sls 
+  190  cd test/
+  191  touch 1.txt
+  192  touch 2.txt
+  193  touch 3.txt
+  194  cd ..
+  195  salt saltminion1 state.sls recursive
+  196  cp user.sls dumuser.sls
+  197  nano dumuser.sls 
+  198  cat /etc/shadow
+  199  nano dumuser.sls 
+  200  salt saltminion1 state.sls dumuser
+  201  nano tomcat.sls
+  202  Y
+  203  ls
+  204  cp packages.sls tomcat.sls
+  205  nano tomcat.sls 
+  206  salt saltminion1 state.sls tomcat test=true
+  207  salt saltminion1 state.sls tomcat
+  208  cp /home/user/Downloads/ /srv/salt/
+  209  cp /home/user/Downloads/sample.war /srv/salt/
+  210  nano deploy.sls
+  211  salt saltminion1 state.sls deploy test=true
+  212  ls
+  213  nano deploy.sls
+  214  salt saltminion1 state.sls deploy test=true
+  215  nano deploy.sls
+  216  salt saltminion1 state.sls deploy test=true
+  217  salt saltminion1 state.sls deploy
+  218  nano deploy.sls
+  219  cat one.sls
+  220  nano one.sls
+  221  cp one.sls two.sls
+  222  nano two.sls 
+  223  cat one.sls 
+  224  cat two.sls 
+  225  salt saltminion1 state.sls one test=true
+  226  cat one.sls 
+  227  nano one.sls 
+  228  salt saltminion1 state.sls one test=true
+  229  nano one.sls 
+  230  nano two.sls 
+  231  salt saltminion1 state.sls one test=true
+  232  salt saltminion1 state.sls one 
+  233  ls
+  234  nano top.sls
+  235  salt '*' state.apply test=true
+  236  salt '*' state.apply
+  237  nano top.sls
+  238  salt saltminion1 state.show_top
+  239  salt saltminion2 state.show_top
+  240  mkdir removetomcat
+  241  cd removetomcat/
+  242  nano init.sls
+  243  cd ..
+  244  ls
+  245  cp top.sls top_old.sls
+  246  nano top.sls 
+  247  cd removetomcat/
+  248  cat init.sls 
+  249  cd ..
+  250  salt '*' salt.apply test=true
+  251  salt '*' state.apply test=true
+  252  salt '*' state.apply
+  253  cd removetomcat/
+  254  cat init.sls 
+  255  cd ..
+  256  cat top.sls 
+  257  ls
+  258  ifconfig
+  259  salt '*' test.ping
+  260  salt 'saltminion*' test.ping
+  261  salt -L 'saltminion1,saltminion2' test.ping
+  262  salt -G 'env:prd' test.ping
+  263  salt -G 'env:prod' test.ping
+  264  salt -C 'G@env:prod and L@saltminion2' test.ping
+  265  salt -C 'G@env:prod or L@saltminion2' test.ping
+  266  salt -C 'G@env:prod and L@saltminion1' test.ping
+  267  history 
+  268  history >> history1112.txt
